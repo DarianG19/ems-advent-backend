@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 connectDB();
 
-const allowedOrigins = ['http://localhost:3000']; // Frontend-URL hier eintragen
+const allowedOrigins = [process.env.ALLOWED_ORIGIN_1, process.env.ALLOWED_ORIGIN_2, process.env.ALLOWED_ORIGIN_3]; // Frontend-URL hier eintragen
 
 app.use(
     cors({

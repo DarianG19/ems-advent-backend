@@ -75,3 +75,4 @@ fabric.properties
 
 .env
 /node_modules
+/scripts

@@ -20,12 +20,13 @@ router.post('/login', async (req, res) => {
         const payload = { user: { id: user.id } };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        res.cookie('jwt', token, {
+        /*res.cookie('jwt', token, {
             httpOnly: true, // Verhindert Zugriff über JavaScript (XSS-Schutz)
             secure: process.env.NODE_ENV === 'production', // Nur über HTTPS
             maxAge: 3600000, // 1 Stunde
             sameSite: 'none', // CSRF-Schutz
-        });
+        });*/
+        res.setHeader('Set-Cookie', `jwt=${token}; HttpOnly; Secure; SameSite=None`);
 
         res.status(200).json({ msg: 'Login successful' });
     } catch (error) {

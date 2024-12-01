@@ -12,7 +12,7 @@ const allowedOrigins = [process.env.ALLOWED_ORIGIN_1, process.env.ALLOWED_ORIGIN
 
 app.use(
     cors({
-        origin: 'https://ems-advent-51vxwm03j-dariang19s-projects.vercel.app', // Erlaubte Ursprünge
+        origin: process.env.ALLOWED_ORIGIN_1, // Erlaubte Ursprünge
         credentials: true, // Cookies und Anmeldeinformationen erlauben
     })
 );

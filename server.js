@@ -22,6 +22,7 @@ app.use(express.json());
 // Authentifizierung und Türchen-Routen
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/doors', require('./routes/door'));
+app.use('/healthz', (req, res) => res.sendStatus(200));
 
-const PORT = process.env.PORT || 5005;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

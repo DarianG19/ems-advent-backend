@@ -21,7 +21,7 @@ router.post('/login', async (req, res) => {
 
         res.cookie('jwt', token, {
             httpOnly: true, // Verhindert Zugriff über JavaScript (XSS-Schutz)
-            secure: false,
+            secure: true, // Nur über HTTPS
             maxAge: 3600000, // 1 Stunde
             sameSite: 'strict', // CSRF-Schutz
         });

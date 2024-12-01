@@ -27,6 +27,8 @@ router.post('/login', async (req, res) => {
             sameSite: 'none', // CSRF-Schutz
         });
 
+        res.setHeader('Set-Cookie', `jwt=${token};HttpOnly;Secure;SameSite=None;Max-Age=3600`);
+
         res.status(200).json({ msg: 'Login successful' });
     } catch (error) {
         res.status(500).send('Server error');

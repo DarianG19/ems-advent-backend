@@ -21,9 +21,9 @@ router.post('/login', async (req, res) => {
 
         res.cookie('jwt', token, {
             httpOnly: true, // Verhindert Zugriff über JavaScript (XSS-Schutz)
-            secure: true, // Nur über HTTPS
+            secure: process.env.NODE_ENV === 'production', // Nur über HTTPS
             maxAge: 3600000, // 1 Stunde
-            sameSite: 'strict', // CSRF-Schutz
+            sameSite: 'none', // CSRF-Schutz
         });
 
         res.status(200).json({ msg: 'Login successful' });
@@ -37,7 +37,7 @@ router.post('/logout', (req, res) => {
     res.clearCookie('jwt', {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: 'none',
     });
     res.status(200).json({ msg: 'Logout successful' });
 });

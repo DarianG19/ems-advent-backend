@@ -23,7 +23,7 @@ router.post('/login', async (req, res) => {
             httpOnly: true, // Verhindert Zugriff über JavaScript (XSS-Schutz)
             secure: false,
             maxAge: 3600000, // 1 Stunde
-            sameSite: 'lax', // CSRF-Schutz
+            sameSite: 'strict', // CSRF-Schutz
         });
 
         res.status(200).json({ msg: 'Login successful' });
